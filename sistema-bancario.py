@@ -30,6 +30,20 @@ while True:
             print("valor inválido para deposito")   
     elif opcao == 2:
         print("Voce escolheu a opção: SAQUE")
+        if quant < LIMITE_QUANT_SAQUE:
+            saque=float(input("Entre com o valor que deseja sacar: "))
+            if saque <= saldo:    
+                if saque <= LIMITE_VALOR_SAQUE:
+                    saldo-=saque
+                    extrato+= f"Saque: R$ {saque:.2f}\n"
+                    quant+=1
+                    print("Saque realizado com sucesso!!")
+                else:
+                    print("Limite de saque excedido!")
+            else:
+                print("saldo insuficiente!!")
+        else:
+            print("Quantidade de saque excedido!")
     elif opcao == 3:
         print("Voce escolheu a opção: EXTRATO")
     elif opcao == 0:
