@@ -26,6 +26,7 @@ while True:
         if deposito > 0:
             saldo+=deposito
             extrato+= f"Deposito: R$ {deposito:.2f}\n"
+            print("Deposito realizado com sucesso!!")
         else:
             print("valor inválido para deposito")   
     elif opcao == 2:
