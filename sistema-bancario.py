@@ -47,6 +47,11 @@ while True:
             print("Quantidade de saque excedido!")
     elif opcao == 3:
         print("Voce escolheu a opção: EXTRATO")
+        if extrato != "" :
+            extrato+= f"saldo total: R$ {saldo:.2f}"
+            print(extrato)
+        else:
+            print("Não foram realizados transações!!")
     elif opcao == 0:
         print("Voce escolheu a opção: SAIR")
         break
