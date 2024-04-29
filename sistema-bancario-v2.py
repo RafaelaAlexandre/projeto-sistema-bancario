@@ -54,7 +54,27 @@ def extrato(saldo,/,*,extrato):
 def nova_conta(agencia, num_conta, usuario, contas_corrente):
    novo_dicionario = {'agencia': agencia, 'num_conta': num_conta, 'usuario': usuario, 'saldo':0, 'extrato':"" }
    contas_corrente.append(novo_dicionario)
-def novo_cliente():
-   def novo_cliente(nome, data_nasc, cpf, endereco, clientes):
-    novo_dicionario = {'nome': nome, 'data_nasc': data_nasc, 'cpf': cpf, 'endereco':endereco}
-    clientes.append(novo_dicionario)
+def novo_cliente(nome, data_nasc, cpf, endereco, clientes):
+   novo_dicionario = {'nome': nome, 'data_nasc': data_nasc, 'cpf': cpf, 'endereco':endereco}
+   clientes.append(novo_dicionario)
+def exibir_clientes(clientes):
+   for dicionario in clientes:
+        print("nome:", dicionario['nome'])
+        print("data de nascimento:", dicionario['data_nasc'])
+        print("cpf:", dicionario['cpf'])
+        print("endereço:", dicionario['endereco'])
+
+lista_clientes=[]
+
+
+while True:
+   opcao=menu_cliente()
+   if opcao == 1:
+
+   elif opcao == 2:
+
+   elif opcao == 3:
+   elif opcao == 4:
+   elif opcao == 5:
+   elif opcao == 0:
+   else:
