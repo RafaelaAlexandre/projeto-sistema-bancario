@@ -24,10 +24,24 @@ def menu_cliente():
 
     """ 
    return int(input(menu+"==>"))
-def deposito(valor, saldo, extrato):
+def deposito(valor, saldo, extrato,/):
    if valor > 0:
       saldo+=valor
       extrato+= f"Deposito: R$ {valor:.2f}\n"
       return True, saldo, extrato
    else:
       return False, saldo, extrato
+def saque(*,valor, saldo, extrato, limite_valor, limite_quant, quant):
+   if quant < limite_quant:
+      if valor <= saldo:    
+         if valor <= limite_valor:
+            saldo-=valor
+            extrato+= f"Saque: R$ {valor:.2f}\n"
+            quant+=1
+            return True, saldo, extrato, quant
+         else:
+            return False, saldo, extrato, quant
+      else:
+         return False, saldo, extrato, quant
+   else:
+      return False, saldo, extrato, quant
