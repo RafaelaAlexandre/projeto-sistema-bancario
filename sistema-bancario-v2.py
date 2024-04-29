@@ -65,6 +65,7 @@ def exibir_clientes(clientes):
         print("endereço:", dicionario['endereco'])
 
 lista_clientes=[]
+lista_contas[]
 
 
 while True:
@@ -75,9 +76,10 @@ while True:
       cpf=int(input("entre com cpf [apenas numeros]:"))
       endereco=input("entre com o endereço")
       novo_cliente(nome, data_nasc, cpf, endereco, lista_clientes)
-   # elif opcao == 2:
+   elif opcao == 2:
+      exibir_clientes(lista_clientes)
+   elif opcao == 3:
 
-   # elif opcao == 3:
    # elif opcao == 4:
    # elif opcao == 5:
    # elif opcao == 0:
