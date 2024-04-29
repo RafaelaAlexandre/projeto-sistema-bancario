@@ -78,6 +78,11 @@ def exibir_contas(contas):
         print("Saldo:", conta['saldo'])
         print("Extrato:", conta['extrato'])
         print()
+def buscar_conta(lista_contas, num_conta):
+    for conta in lista_contas:
+        if conta['num_conta'] == num_conta:
+            return conta
+    return None
 lista_clientes=[]
 lista_contas=[]
 num_conta=1
@@ -85,6 +90,7 @@ num_conta=1
 
 while True:
    opcao=menu_cliente()
+
    if opcao == 1:
       nome=input("entre com o nome:")
       data_nasc=input("entre com a data no formato xx/xx/xxxx")
@@ -93,17 +99,46 @@ while True:
       if buscar_cliente(lista_clientes, cpf) == False:
          novo_cliente(nome, data_nasc, cpf, endereco, lista_clientes)
       else:
-         print("cliente ja existente")  
+         print("cliente ja existente") 
+
    elif opcao == 2:
       exibir_clientes(lista_clientes)
+
    elif opcao == 3:
       usuario=int(input("entre com cpf [apenas numeros]:"))
       if buscar_cliente(lista_clientes, usuario) == True:
          num_conta= nova_conta( "0001" , num_conta, usuario, lista_contas)
       else:
-         print("cliente não existente")         
+         print("cliente não existente") 
+
    elif opcao == 4:
       exibir_contas(lista_contas)
-   # elif opcao == 5:
-   # elif opcao == 0:
-   # else:
+
+   elif opcao == 5:
+      numero = int(input("qual a conta deseja acessar:"))
+      conta= buscar_conta(lista_contas, numero)
+      if  conta != None: 
+         while True:
+            operacao= menu_operacao()
+            if operacao == 1:
+               valor=int(input("Qual valor deseja depositar"))
+               validador, conta['saldo'], conta['extrato'] = deposito(valor, conta['saldo'], conta['extrato'])
+               if validador == True:
+                  print("Deposito realizado com sucesso")
+               else:
+                  print("Deposito não realizado")
+            # elif operacao == 2:
+            # elif operacao == 3:
+            elif operacao == 0:
+               break
+            else:
+               print("Operação invalida!!")            
+         
+      else:
+         print("conta não existe")   
+
+   elif opcao == 0:
+      break
+
+   else:
+      print("Opção inválida!!")
