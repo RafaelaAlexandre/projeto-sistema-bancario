@@ -70,11 +70,15 @@ lista_clientes=[]
 while True:
    opcao=menu_cliente()
    if opcao == 1:
+      nome=input("entre com o nome:")
+      data_nasc=input("entre com a data no formato xx/xx/xxxx")
+      cpf=int(input("entre com cpf [apenas numeros]:"))
+      endereco=input("entre com o endereço")
+      novo_cliente(nome, data_nasc, cpf, endereco, lista_clientes)
+   # elif opcao == 2:
 
-   elif opcao == 2:
-
-   elif opcao == 3:
-   elif opcao == 4:
-   elif opcao == 5:
-   elif opcao == 0:
-   else:
+   # elif opcao == 3:
+   # elif opcao == 4:
+   # elif opcao == 5:
+   # elif opcao == 0:
+   # else:
