@@ -54,4 +54,7 @@ def extrato(saldo,/,*,extrato):
 def nova_conta(agencia, num_conta, usuario, contas_corrente):
    novo_dicionario = {'agencia': agencia, 'num_conta': num_conta, 'usuario': usuario, 'saldo':0, 'extrato':"" }
    contas_corrente.append(novo_dicionario)
-    
+def novo_cliente():
+   def novo_cliente(nome, data_nasc, cpf, endereco, clientes):
+    novo_dicionario = {'nome': nome, 'data_nasc': data_nasc, 'cpf': cpf, 'endereco':endereco}
+    clientes.append(novo_dicionario)
