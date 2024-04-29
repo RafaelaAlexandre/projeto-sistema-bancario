@@ -52,7 +52,7 @@ def extrato(saldo,/,*,extrato):
    else:
       return False, extrato
 def nova_conta(agencia, num_conta, usuario, contas_corrente):
-   novo_dicionario = {'agencia': agencia, 'num_conta': num_conta, 'usuario': usuario, 'saldo':0, 'extrato':"" }
+   novo_dicionario = {'agencia': agencia, 'num_conta': num_conta, 'usuario': usuario, 'saldo':0, 'extrato':"",'quant':1 }
    contas_corrente.append(novo_dicionario)
    num_conta += 1
    return num_conta 
@@ -85,6 +85,8 @@ def buscar_conta(lista_contas, num_conta):
     return None
 lista_clientes=[]
 lista_contas=[]
+LIMITE_VALOR=500
+LIMITE_QUANT=3
 num_conta=1
 
 
@@ -127,7 +129,13 @@ while True:
                   print("Deposito realizado com sucesso")
                else:
                   print("Deposito não realizado")
-            # elif operacao == 2:
+            elif operacao == 2:
+               valor=int(input("Qual valor deseja Sacar"))
+               validador, conta['saldo'], conta['extrato'], conta['quant'] = saque(valor=valor, saldo=conta['saldo'], extrato=conta['extrato'], limite_valor=LIMITE_VALOR, limite_quant=LIMITE_VALOR, quant=conta['quant'])
+               if validador == True:
+                  print("Saque realizado com sucesso")
+               else:
+                  print("Saque não realizado")
             # elif operacao == 3:
             elif operacao == 0:
                break
