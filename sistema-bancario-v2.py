@@ -50,4 +50,8 @@ def extrato(saldo,/,*,extrato):
       extrato+= f"saldo total: R$ {saldo:.2f}"
       return True, extrato
    else:
-      return False, extrato   
+      return False, extrato
+def nova_conta(agencia, num_conta, usuario, contas_corrente):
+   novo_dicionario = {'agencia': agencia, 'num_conta': num_conta, 'usuario': usuario, 'saldo':0, 'extrato':"" }
+   contas_corrente.append(novo_dicionario)
+    
