@@ -10,5 +10,17 @@ def menu_operacao():
 
     """ 
    return int(input(menu+"==>"))
+def menu_cliente():
+   menu = """
 
-    
+    Escolha a operação desejada:
+
+    [1] CADASTRAR CLIENTE
+    [2] LISTAR CLIENTES
+    [3] CADASTRAR CONTA 
+    [4] LISTAR CONTA
+    [5] ACESSAR CONTA
+    [0] SAIR
+
+    """ 
+   return int(input(menu+"==>"))   
