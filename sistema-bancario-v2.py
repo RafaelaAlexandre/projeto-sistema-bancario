@@ -45,3 +45,9 @@ def saque(*,valor, saldo, extrato, limite_valor, limite_quant, quant):
          return False, saldo, extrato, quant
    else:
       return False, saldo, extrato, quant
+def extrato(saldo,/,*,extrato):
+   if extrato != "" :
+      extrato+= f"saldo total: R$ {saldo:.2f}"
+      return True, extrato
+   else:
+      return False, extrato   
