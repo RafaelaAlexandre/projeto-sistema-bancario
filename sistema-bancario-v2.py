@@ -38,6 +38,7 @@ def saque(*,valor, saldo, extrato, limite_valor, limite_quant, quant):
             saldo-=valor
             extrato+= f"Saque: R$ {valor:.2f}\n"
             quant+=1
+            print(quant)
             return True, saldo, extrato, quant
          else:
             return False, saldo, extrato, quant
@@ -52,7 +53,7 @@ def extrato(saldo,/,*,extrato):
    else:
       return False, extrato
 def nova_conta(agencia, num_conta, usuario, contas_corrente):
-   novo_dicionario = {'agencia': agencia, 'num_conta': num_conta, 'usuario': usuario, 'saldo':0, 'extrato':"",'quant':1 }
+   novo_dicionario = {'agencia': agencia, 'num_conta': num_conta, 'usuario': usuario, 'saldo':0, 'extrato':"",'quant':0 }
    contas_corrente.append(novo_dicionario)
    num_conta += 1
    return num_conta 
@@ -131,17 +132,21 @@ while True:
                   print("Deposito não realizado")
             elif operacao == 2:
                valor=int(input("Qual valor deseja Sacar"))
-               validador, conta['saldo'], conta['extrato'], conta['quant'] = saque(valor=valor, saldo=conta['saldo'], extrato=conta['extrato'], limite_valor=LIMITE_VALOR, limite_quant=LIMITE_VALOR, quant=conta['quant'])
+               validador, conta['saldo'], conta['extrato'], conta['quant'] = saque(valor=valor, saldo=conta['saldo'], extrato=conta['extrato'], limite_valor=LIMITE_VALOR, limite_quant=LIMITE_QUANT, quant=conta['quant'])
                if validador == True:
                   print("Saque realizado com sucesso")
                else:
                   print("Saque não realizado")
-            # elif operacao == 3:
+            elif operacao == 3:
+               Validador, Extrato = extrato (conta['saldo'],extrato=conta['extrato'])
+               if Validador == True:
+                  print(Extrato)
+               else:
+                  print("Nunhuma transação realizada!")
             elif operacao == 0:
                break
             else:
-               print("Operação invalida!!")            
-         
+               print("Operação invalida!!") 
       else:
          print("conta não existe")   
 
