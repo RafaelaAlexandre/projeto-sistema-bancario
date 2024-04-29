@@ -54,6 +54,8 @@ def extrato(saldo,/,*,extrato):
 def nova_conta(agencia, num_conta, usuario, contas_corrente):
    novo_dicionario = {'agencia': agencia, 'num_conta': num_conta, 'usuario': usuario, 'saldo':0, 'extrato':"" }
    contas_corrente.append(novo_dicionario)
+   num_conta += 1
+   return num_conta 
 def novo_cliente(nome, data_nasc, cpf, endereco, clientes):
    novo_dicionario = {'nome': nome, 'data_nasc': data_nasc, 'cpf': cpf, 'endereco':endereco}
    clientes.append(novo_dicionario)
@@ -63,9 +65,15 @@ def exibir_clientes(clientes):
         print("data de nascimento:", dicionario['data_nasc'])
         print("cpf:", dicionario['cpf'])
         print("endereço:", dicionario['endereco'])
+def buscar_cliente(Clientes, cpf):
+   for i in Clientes:
+      if i['cpf']==cpf:
+         return True
+   return False
 
 lista_clientes=[]
-lista_contas[]
+lista_contas=[]
+num_conta=1
 
 
 while True:
@@ -75,11 +83,18 @@ while True:
       data_nasc=input("entre com a data no formato xx/xx/xxxx")
       cpf=int(input("entre com cpf [apenas numeros]:"))
       endereco=input("entre com o endereço")
-      novo_cliente(nome, data_nasc, cpf, endereco, lista_clientes)
+      if buscar_cliente(lista_clientes, cpf) == False:
+         novo_cliente(nome, data_nasc, cpf, endereco, lista_clientes)
+      else:
+         print("cliente ja existente")  
    elif opcao == 2:
       exibir_clientes(lista_clientes)
    elif opcao == 3:
-
+      usuario=int(input("entre com cpf [apenas numeros]:"))
+      if buscar_cliente(lista_clientes, usuario) == False:
+         num_conta= nova_conta( "0001" , num_conta, usuario, lista_contas)
+      else:
+         print("cliente não existente")         
    # elif opcao == 4:
    # elif opcao == 5:
    # elif opcao == 0:
