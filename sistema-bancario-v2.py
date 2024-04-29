@@ -1,14 +1,14 @@
 def menu_operacao():
    menu = """
 
-    Escolha a operação desejada:
+   Escolha a operação desejada:
 
-    [1] DEPOSITO
-    [2] SAQUE
-    [3] EXTRATO
-    [0] SAIR
+   [1] DEPOSITO
+   [2] SAQUE
+   [3] EXTRATO
+   [0] SAIR
 
-    """ 
+   """ 
    return int(input(menu+"==>"))
 def menu_cliente():
    menu = """
@@ -23,4 +23,11 @@ def menu_cliente():
     [0] SAIR
 
     """ 
-   return int(input(menu+"==>"))   
+   return int(input(menu+"==>"))
+def deposito(valor, saldo, extrato):
+   if valor > 0:
+      saldo+=valor
+      extrato+= f"Deposito: R$ {valor:.2f}\n"
+      return True, saldo, extrato
+   else:
+      return False, saldo, extrato
