@@ -70,7 +70,14 @@ def buscar_cliente(Clientes, cpf):
       if i['cpf']==cpf:
          return True
    return False
-
+def exibir_contas(contas):
+    for conta in contas:
+        print("Agência:", conta['agencia'])
+        print("Número da Conta:", conta['num_conta'])
+        print("Usuário:", conta['usuario'])
+        print("Saldo:", conta['saldo'])
+        print("Extrato:", conta['extrato'])
+        print()
 lista_clientes=[]
 lista_contas=[]
 num_conta=1
@@ -91,11 +98,12 @@ while True:
       exibir_clientes(lista_clientes)
    elif opcao == 3:
       usuario=int(input("entre com cpf [apenas numeros]:"))
-      if buscar_cliente(lista_clientes, usuario) == False:
+      if buscar_cliente(lista_clientes, usuario) == True:
          num_conta= nova_conta( "0001" , num_conta, usuario, lista_contas)
       else:
          print("cliente não existente")         
-   # elif opcao == 4:
+   elif opcao == 4:
+      exibir_contas(lista_contas)
    # elif opcao == 5:
    # elif opcao == 0:
    # else:
